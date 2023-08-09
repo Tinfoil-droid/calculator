@@ -101,10 +101,13 @@ body {
 }
 
 [data-type="number"]:active,
-[data-type="number"]:focus {
+[data-type="number"]:focus,
+[data-type="clear"]:active,
+[data-type="clear"]:focus {
   background: rgb(255, 230, 112);
 }
 
-[data-type="number"] {
+[data-type="number"]
+[data-type="clear"] {
   background-color: white;
 }

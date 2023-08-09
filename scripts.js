@@ -33,18 +33,31 @@ keys.addEventListener('click', event => {
     }
 
     if (type === 'equal') {
-        const firstNumber = parseInt(calculator.dataset.firstNumber)
+        const firstNumber = calculator.dataset.firstNumber
         const operator = calculator.dataset.operator
-        const secondNumber = parseInt(displayValue)
+        const secondNumber = displayValue
+        display.textContent = calculate(firstNumber, operator, secondNumber)
+    }
 
-        let result = ''
-        if (operator === 'plus') result = firstNumber + secondNumber
-        if (operator === 'minus') result = firstNumber - secondNumber
-        if (operator === 'times') result = firstNumber * secondNumber
-        if (operator === 'divide') result = firstNumber / secondNumber
+    if (type === 'clear') {
+        const operatorKeys = keys.querySelectorAll('[data-type="operator"]')
+        operatorKeys.forEach(el => el.dataset.state = '')
+        key.dataset.state = ''
 
-        display.textContent = result
+        calculator.dataset.firstNumber = '0'
+        display.textContent = 0
     }
 
     calculator.dataset.previousKeyType = type
 });
+
+function calculate (firstNumber, operator, secondNumber) {
+    firstNumber = parseInt(firstNumber)
+    secondNumber = parseInt(secondNumber)
+    let result = ''
+        if (operator === 'plus') result = firstNumber + secondNumber
+        if (operator === 'minus') result = firstNumber - secondNumber
+        if (operator === 'times') result = firstNumber * secondNumber
+        if (operator === 'divide') result = firstNumber / secondNumber
+        return result
+}
