@@ -92,19 +92,19 @@ body {
 
 .equal:active,
 .equal:focus,
-.operator:focus {
+[data-type="operator"]:focus {
   background: rgb(255, 100, 100);
 }
 
-.operator {
+[data-type="operator"] {
   background: #dbd8e3;
 }
 
-.number:active,
-.number:focus {
+[data-type="number"]:active,
+[data-type="number"]:focus {
   background: rgb(255, 230, 112);
 }
 
-.number {
+[data-type="number"] {
   background-color: white;
 }
