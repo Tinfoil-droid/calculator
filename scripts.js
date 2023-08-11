@@ -12,7 +12,10 @@ keys.addEventListener("click", (event) => {
   const previousKeyType = calculator.dataset.previousKeyType;
 
   if (type === "number") {
-    if (displayValue === "0" || previousKeyType === "operator") {
+    if (previousKeyType === "equal") {
+      display.textContent = keyValue;
+      calculator.dataset.firstNumber = "0";
+    } else if (displayValue === "0" || previousKeyType === "operator") {
       display.textContent = keyValue;
     } else {
       display.textContent = displayValue + keyValue;
@@ -36,6 +39,8 @@ keys.addEventListener("click", (event) => {
     const secondNumber = displayValue;
     if (operator) {
       display.textContent = calculate(firstNumber, operator, secondNumber);
+      calculator.dataset.firstNumber = "0";
+      calculator.dataset.operator = "";
     }
   }
 
