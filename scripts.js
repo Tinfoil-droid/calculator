@@ -56,10 +56,32 @@ function calculate(firstNumber, operator, secondNumber) {
   secondNumber = parseFloat(secondNumber);
   let result = "";
 
-  if (operator === "plus") result = firstNumber + secondNumber;
-  if (operator === "minus") result = firstNumber - secondNumber;
-  if (operator === "times") result = firstNumber * secondNumber;
-  if (operator === "divide") result = firstNumber / secondNumber;
+  if (operator === "+") result = firstNumber + secondNumber;
+  if (operator === "-") result = firstNumber - secondNumber;
+  if (operator === "*") result = firstNumber * secondNumber;
+  if (operator === "/") result = firstNumber / secondNumber;
 
   return result;
 }
+
+document.addEventListener("keydown", (event) => {
+  const key = event.key;
+  const keyElement = keys.querySelector(`button[data-key="${key}"]`);
+
+  if (keyElement) {
+    keyElement.classList.add("active-keyboard");
+    if (keyElement.dataset.type === "operator") {
+      keyElement.classList.add("active-keyboard");
+    }
+  }
+});
+
+document.addEventListener("keyup", (event) => {
+  const key = event.key;
+  const keyElement = keys.querySelector(`button[data-key="${key}"]`);
+
+  if (keyElement) {
+    keyElement.classList.remove("active-keyboard");
+    keyElement.click();
+  }
+});

@@ -115,3 +115,26 @@ body {
 [data-type="number"] [data-type="clear"] {
   background-color: white;
 }
+
+.active-keyboard {
+  background: rgb(255, 230, 112);
+}
+
+.active-keyboard[data-key="+"] {
+  background: rgb(255, 100, 100);
+}
+
+.active-keyboard[data-key="-"] {
+  background: rgb(255, 100, 100);
+}
+
+.active-keyboard[data-key="*"] {
+  background: rgb(255, 100, 100);
+}
+
+.active-keyboard[data-key="/"] {
+  background: rgb(255, 100, 100);
+}
+.active-keyboard[data-key="Enter"] {
+  background: rgb(255, 100, 100);
+}
