@@ -37,8 +37,13 @@ keys.addEventListener("click", (event) => {
     const firstNumber = calculator.dataset.firstNumber;
     const operator = calculator.dataset.operator;
     const secondNumber = displayValue;
-    if (operator) {
-      display.textContent = calculate(firstNumber, operator, secondNumber);
+
+    const calculationResult = calculate(firstNumber, operator, secondNumber);
+
+    if (typeof calculationResult === "string") {
+      display.textContent = calculationResult;
+    } else {
+      display.textContent = calculationResult;
       calculator.dataset.firstNumber = "0";
       calculator.dataset.operator = "";
     }
@@ -64,7 +69,12 @@ function calculate(firstNumber, operator, secondNumber) {
   if (operator === "+") result = firstNumber + secondNumber;
   if (operator === "-") result = firstNumber - secondNumber;
   if (operator === "*") result = firstNumber * secondNumber;
-  if (operator === "/") result = firstNumber / secondNumber;
+  if (operator === "/") {
+    if (secondNumber === 0) {
+      return "15/Can't divide by zero!";
+    }
+    result = firstNumber / secondNumber;
+  }
 
   return result;
 }
