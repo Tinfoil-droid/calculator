@@ -10,11 +10,14 @@
   <body>
     <div id="container">
       <div class="calculator">
-        <div class="calculatorDisplay">0</div>
+        <div class="calculatorDisplay">
+          <div data-previous-operand class="previous-operand"></div>
+          <div data-current-operand class="current-operand"></div>
+        </div>
         <div class="calculatorKeys">
           <button data-key="+" data-type="operator">+</button>
           <button data-key="-" data-type="operator">-</button>
-          <button data-key="*" data-type="operator">&times;</button>
+          <button data-key="*" data-type="operator">*</button>
           <button data-key="/" data-type="operator">÷</button>
           <button class="one" data-type="number" data-key="1">1</button>
           <button class="two" data-type="number" data-key="2">2</button>
@@ -31,6 +34,7 @@
             C
           </button>
           <button class="equal" data-type="equal" data-key="Enter">=</button>
+          <button class="del" data-type="del" data-key="Delete">AC</button>
         </div>
       </div>
     </div>
