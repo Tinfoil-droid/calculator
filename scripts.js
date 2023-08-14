@@ -137,6 +137,10 @@ operationButtons.forEach((button) => {
 equalButton.addEventListener("click", () => {
   calculator.compute();
   calculator.updateDisplay();
+  if (calculator.currentOperand === "") {
+    calculator.currentOperand = "0";
+    calculator.updateDisplay();
+  }
 });
 
 allClearButton.addEventListener("click", () => {
@@ -148,6 +152,10 @@ allClearButton.addEventListener("click", () => {
 deleteButton.addEventListener("click", () => {
   calculator.delete();
   calculator.updateDisplay();
+  if (calculator.currentOperand === "") {
+    calculator.currentOperand = "0";
+    calculator.updateDisplay();
+  }
 });
 
 const keys = document.querySelector(".calculatorKeys");
@@ -157,6 +165,7 @@ document.addEventListener("keydown", (event) => {
   const keyElement = keys.querySelector(`button[data-key="${key}"]`);
 
   if (keyElement) {
+    keyElement.click();
     keyElement.classList.add("active-keyboard");
     if (keyElement.dataset.type === "operator") {
       keyElement.classList.add("active-keyboard");
@@ -170,6 +179,5 @@ document.addEventListener("keyup", (event) => {
 
   if (keyElement) {
     keyElement.classList.remove("active-keyboard");
-    keyElement.click();
   }
 });
