@@ -34,7 +34,9 @@ class Calculator {
     let computation;
     const prev = parseFloat(this.previousOperand);
     const current = parseFloat(this.currentOperand);
+
     if (isNaN(prev) || isNaN(current)) return;
+
     switch (this.operation) {
       case "+":
         computation = prev + current;
@@ -46,6 +48,12 @@ class Calculator {
         computation = prev * current;
         break;
       case "÷":
+        if (current === 0) {
+          this.currentOperand = "You just won Maths!";
+          this.operation = undefined;
+          this.previousOperand = "";
+          return;
+        }
         computation = prev / current;
         break;
       default:
@@ -76,15 +84,21 @@ class Calculator {
   }
 
   updateDisplay() {
-    this.currentOperandandTextElement.innerText = this.getDisplayNumber(
-      this.currentOperand
-    );
-    if (this.operation != null) {
-      this.previousOperandandTextElement.innerText = `${this.getDisplayNumber(
-        this.previousOperand
-      )} ${this.operation}`;
-    } else {
+    if (this.currentOperand === "You just won Maths!") {
+      this.currentOperandandTextElement.innerText = this.currentOperand;
       this.previousOperandandTextElement.innerText = "";
+    } else {
+      this.currentOperandandTextElement.innerText = this.getDisplayNumber(
+        this.currentOperand
+      );
+
+      if (this.operation != null) {
+        this.previousOperandandTextElement.innerText = `${this.getDisplayNumber(
+          this.previousOperand
+        )} ${this.operation}`;
+      } else {
+        this.previousOperandandTextElement.innerText = "";
+      }
     }
   }
 }
@@ -127,6 +141,7 @@ equalButton.addEventListener("click", (button) => {
 
 allClearButton.addEventListener("click", (button) => {
   calculator.clear();
+  calculator.currentOperand = "0";
   calculator.updateDisplay();
 });
 
