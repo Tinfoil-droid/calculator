@@ -47,7 +47,7 @@ class Calculator {
       case "*":
         computation = prev * current;
         break;
-      case "÷":
+      case "/":
         if (current === 0) {
           this.currentOperand = "You just won Maths!";
           this.operation = undefined;
