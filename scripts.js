@@ -1,7 +1,7 @@
 class Calculator {
-  constructor(previousOperandandTextElement, currentOperandandTextElement) {
-    this.previousOperandandTextElement = previousOperandandTextElement;
-    this.currentOperandandTextElement = currentOperandandTextElement;
+  constructor(previousOperandTextElement, currentOperandTextElement) {
+    this.previousOperandTextElement = previousOperandTextElement;
+    this.currentOperandTextElement = currentOperandTextElement;
     this.clear();
   }
 
@@ -85,19 +85,19 @@ class Calculator {
 
   updateDisplay() {
     if (this.currentOperand === "You just won Maths!") {
-      this.currentOperandandTextElement.innerText = this.currentOperand;
-      this.previousOperandandTextElement.innerText = "";
+      this.currentOperandTextElement.innerText = this.currentOperand;
+      this.previousOperandTextElement.innerText = "";
     } else {
-      this.currentOperandandTextElement.innerText = this.getDisplayNumber(
+      this.currentOperandTextElement.innerText = this.getDisplayNumber(
         this.currentOperand
       );
 
       if (this.operation != null) {
-        this.previousOperandandTextElement.innerText = `${this.getDisplayNumber(
+        this.previousOperandTextElement.innerText = `${this.getDisplayNumber(
           this.previousOperand
         )} ${this.operation}`;
       } else {
-        this.previousOperandandTextElement.innerText = "";
+        this.previousOperandTextElement.innerText = "";
       }
     }
   }
@@ -108,16 +108,16 @@ const operationButtons = document.querySelectorAll('[data-type="operator"]');
 const equalButton = document.querySelector('[data-type="equal"]');
 const deleteButton = document.querySelector('[data-type="clear"]');
 const allClearButton = document.querySelector('[data-type="del"]');
-const previousOperandandTextElement = document.querySelector(
+const previousOperandTextElement = document.querySelector(
   "[data-previous-operand]"
 );
-const currentOperandandTextElement = document.querySelector(
+const currentOperandTextElement = document.querySelector(
   "[data-current-operand]"
 );
 
 const calculator = new Calculator(
-  previousOperandandTextElement,
-  currentOperandandTextElement
+  previousOperandTextElement,
+  currentOperandTextElement
 );
 
 numberButtons.forEach((button) => {

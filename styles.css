@@ -39,6 +39,7 @@ button {
   word-wrap: break-word;
   word-break: break-all;
   width: 16.25rem;
+  min-height: 2rem;
   padding: 0.75rem 1rem;
   font-size: calc(1rem * 1.2 * 1.2);
 }
@@ -56,7 +57,7 @@ button {
 }
 
 .del {
-  grid-column: span 4;
+  grid-column: span 3;
   background: #dbd8e3;
 }
 
@@ -106,7 +107,7 @@ button {
 }
 
 .equal {
-  grid-area: equal;
+  grid-area: span 5;
   background: #ff6f3c;
 }
 
